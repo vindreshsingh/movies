@@ -1,0 +1,52 @@
+<nav class="nav navbar-inverse">
+        <div class="container-fluid">
+            
+            <div class ="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar2" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+            <!--<a class="navbar-brand" href="/">Movies-Watch it</a>-->
+            </div>
+            
+            <div class= "collapse navbar-collapse" id="bs-navbar2">
+                <ul class="nav navbar-nav navbar-left">
+                        <li><a href="/" class="mode active"></a></li> 
+                        <li><a href="/home/1/28" class="mode"> Action </a> </li>
+                        <li><a href="/home/1/12" class="mode"> Adventure  </a></li>
+                        <li><a href="/home/1/35" class="mode"> Comedy  </a></li>
+                        <li><a href="/home/1/18"  class="mode"> Drama  </a></li>
+                        <li><a href="/home/1/53"  class="mode"> Thriller  </a></li>
+                        <li><a href="/home/1/10749"  class="mode"> Romance  </a></li>
+                        
+                </ul>
+                <ul class="nav pull-right">
+                    <li><a href="/list/1" class="navbar-right mode" style="font-size: 18px"> Saved lists </a></li>
+                </ul>
+            </div>
+            
+        </div>
+</nav>
+
+<div class="container-fluid" id="classification">
+    <form class="form-horizontal" action="/search/query" method="GET">
+         <input dir="auto" id="search_v4" name="query" type="text" tabindex="2" autocorrect="off" autofill="off" autocomplete="off" spellcheck="false" placeholder="Search for a Movie" value="" data-role="autocomplete" class="form-control" role="textbox" aria-haspopup="true" aria-disabled="false" aria-readonly="false" aria-owns="search_v4_listbox" aria-autocomplete="list"  aria-busy="false">      
+    </form>
+</div>
+
+<div class="container" style="padding-top: 15px;">
+        
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>
+

@@ -1,0 +1,127 @@
+<%- include('../partials/header') %>
+<%- include('../partials/moviespartial') %>
+        
+<div class="container-fluid" id="classification">
+    <form class="form-horizontal" action="" method="GET" id="searchMovieForm">
+         <input dir="auto" id="search_movie_bar" maxlength="80" list="movies" name="moviequery" type="text" tabindex="2" autocorrect="on"  spellcheck="false" placeholder="Search for a Movie" value="" data-role="autocomplete" class="form-control" role="textbox" aria-haspopup="true" aria-disabled="false" aria-readonly="false" aria-owns="search_v4_listbox" aria-autocomplete="list"  aria-busy="false" />      
+    </form>
+</div>
+         
+        <div class="listMovieDisplay"> 
+        <% moviesInfoArr.forEach(function(movie){ %>
+             <div class="row movieListRow">
+                  <div class="col-md-3 ">
+                      <% var imageURL = "http://image.tmdb.org/t/p/w500/" + movie.movieParm.image %>
+                      <div class="thumbnail">
+                      <a href="/movie/<%= movie.movieParm.movieId %>">
+                      <img src="<%= imageURL %>" class="img-rounded listpage-image" alt="<%= movie.movieParm.movieName %>"> 
+                      </a>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <blockquote><p><%=  movie.movieParm.overview %></p></blockquote>
+                  </div>
+                  <div class="col-md-3">
+                      <form action="/list/<%= listID %>/<%= movie._id %>?_method=DELETE" method="POST">
+                          <button class="movie-delete-btn" style="border: 0; background: none;"><i class="fa fa-trash" aria-hidden="true" style="font-size:45px; color:red"></i></button>
+                      </form>
+                  </div>
+            </div>
+        <% }) %> 
+        </div>
+        
+        <datalist id="movies">
+        <% moviesInfoArr.forEach(function(movie){ %>
+            <option id="<%= movie.movieParm.movieId %>"><%= movie.movieParm.movieName %></option>
+        <% }) %>   
+        </datalist>
+
+<%- include('../partials/footer') %>
+
+<script type='text/javascript'>
+var formSubmitted = false;
+var movieIDMapping = [];
+
+     $('#search_movie_bar').on("input", function() {
+    //====================================================
+    //                     Building URL
+    //====================================================
+      $('#search_movie_bar').attr("value", this.value);
+      var modifiedAttr = String( $("#searchMovieForm").attr("action"));
+      var combinedURL =  "/movie" + "/" + $('#search_movie_bar').attr("value");
+      $("#searchMovieForm").attr("action",combinedURL);
+    //====================================================
+    //                    Form Validation 
+    //====================================================
+      $("#search_movie_bar").on('keypress', function (key){
+        //   alert("Inside Keypress event");
+          console.log("Key Pressed");
+          var foundObj = movieIDMapping.find(moviesList => moviesList.name === String($('#search_movie_bar').attr("value")));
+          if(key.keyCode == 13 &&  String($("#searchMovieForm").attr("action")).trim() == "/movie/"){
+              
+              swal(
+                      'Empty Input',
+                      'You should enter something!',
+                      'error'
+                )
+                $("#searchMovieForm").submit(function(e){
+                    e.preventDefault();
+                });
+          }
+          else if(key.keyCode == 13 && foundObj == undefined){
+              swal(
+                      'Movie not available',
+                      'Search for Something that is available in the list',
+                      'error'
+                  )
+                $("#searchMovieForm").submit(function(e){
+                    e.preventDefault();
+                });
+          }
+          else if(key.keyCode == 13){
+              var combinedURL =  "/movie" + "/" + foundObj.value;
+            //   alert(combinedURL);
+              $("#searchMovieForm").attr("action",combinedURL); 
+              $( "form" ).on( "submit", function( event ) {
+                  event.stopPropagation();
+              });
+          }
+      });
+ });
+
+// $('#search_movie_bar').keydown(function(e) {
+//     if (e.keyCode == 13) {
+//         e.preventDefault();
+//     }
+//     // alert(e.keyCode);
+// });
+
+ 
+// $(document).on('submit',"#searchMovieForm",function(e){
+//     // $("#searchMovieForm").submit();
+//     e.preventDefault();
+// });
+
+
+ 
+$(document).ready(function(){
+    getText();
+});
+
+function getText(){
+    // alert("Get text called");
+    $("#movies > option").each(function(option){
+        var text = this.text;
+        var val = this.id;
+        var obj = {}
+        obj['name'] = text;
+        obj['value'] = val;
+        movieIDMapping.push(obj);
+    }); 
+    //  console.log(JSON.stringify(movieIDMapping));
+}
+
+</script>
+
+
+ 

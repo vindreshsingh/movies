@@ -1,0 +1,266 @@
+body {
+    animation: fadein 1s ease-in;
+    -moz-animation: fadein 1s ease-in; /* Firefox */
+    -webkit-animation: fadein 1s ease-in; /* Safari and Chrome */
+    -o-animation: fadein 1s ease-in; /* Opera */
+}
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.navbar-inverse {
+    background: #242438;
+    padding-top: 5px;
+    padding-bottom: 3px;
+}
+
+a.navbar-right.mode{
+    font-size: 20px;
+    color: #9d9d9d;
+    background: none;
+}
+
+a.navbar-right.mode:hover{
+    color: #fff;
+    background-color: transparent;
+}
+
+div.thumbnail div p a.inactiveLink{
+   cursor: default;
+   font-family: 'Catamaran', sans-serif;
+   font-size: 15px;
+   font-weight: 600;
+   color:  #0d0d0d;
+}
+
+.signup, .form-group, input{
+      width:100%;
+      font-size:16pt;
+      box-sizing:border-box;
+}
+
+.movieshow-display-page{
+    padding: 20px;
+}
+
+.thumbnail{
+    border: 0;
+}
+
+.thumbnail img{
+    width: 100%;
+    height: 200px;
+}
+
+.thumbnail img:hover{
+    -webkit-transition: all 0.3s ease;
+    -moz-transition:    all 0.3s ease;
+    -o-transition:      all 0.3s ease;
+    -ms-transition:     all 0.3s ease;
+    transition:         all 0.3s ease;
+    opacity: 0.5;
+}
+
+#classification{
+    padding: 0px;
+    height: 34px;
+}
+
+div.thumbnail img.listpage-image{
+    width: 200px;
+    height: 150px;
+}
+
+div.index-image-thumbnail {
+    background: #403B4A;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #E7E9BB, #403B4A);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #E7E9BB, #403B4A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+a.btn.btn-info.page-button{
+    background: none;
+    border: 1px solid;
+    box-sizing: border-box;
+    width: 100px;
+}
+
+a.btn.btn-info.page-button.first-page{
+    float: left;
+    box-sizing: border-box
+}
+
+.add{
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.share{
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.fa{
+    padding-top: 10px;
+    float: left;
+    font-size: 35px;
+    /*color: #4169E1;*/
+    color: #191970;
+}
+
+#fa-share{
+    padding-left: 10px;
+}
+
+div .modal-dialog{
+    overflow-y: initial !important
+}
+div .modal-body{
+    height: 400px;
+    overflow-y: auto;
+}
+
+div .modal-body .new-list-modal{
+    overflow-y: auto;
+}
+
+div.row.movieListRow{
+    border: 0.5px;
+    border-style: solid;
+    border-color: gray;
+    border-radius: 4px;
+    
+}
+
+.movieshow-display-page{
+    margin-left: 0px;
+}
+
+#movieID
+{
+    display: none;
+}
+
+#search_v4{
+     height: 40px; font-size: 18px; width: 100vw; padding-left: 0px; 
+}
+
+
+li.list-group-item.moviesInfoDisplay{
+    font-family: 'Catamaran', sans-serif;
+    font-size: 15px;
+    text-align: left;
+}
+
+li.list-group-item.moviesInfoDisplay.selected{
+    background-color: #3820DA;
+}
+
+li.list-group-item.li-list-item{
+    color: black;
+    font-family: 'Catamaran', sans-serif;
+    font-size: 15px;
+}
+
+li.list-group-item.li-list-item:hover{
+    background-color: #0099FF;
+    text-decoration: none;
+}
+
+input.search_movie_bar{
+    width: 100%;
+}
+
+a.movieLink{
+    text-decoration: none;
+}
+
+#movieHeading{
+    font-family: 'Catamaran', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+}
+
+#movieTitle{
+    font-family: 'Catamaran', sans-serif;
+    font-size: 25px;
+    text-align: left;
+}
+#movieDescription{
+    font-family: 'Catamaran', sans-serif;
+    font-size: 20px;
+    text-align: left;
+}
+
+#movieListUL .new-list{
+    width: 100%;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 4px;
+    background: none;
+    border-top-right-radius: 4px;
+    height: 40px;
+}
+
+
+div.listMovieDisplay{
+background: #ECE9E6;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+button.movie-delete-btn{
+  
+}
+
+
+
+/*#movieLinkButton{*/
+
+/*}*/
+
+/*Button Style*/
+
+
+/*datalist #movies{*/
+/*    display: none;*/
+/*}*/
+/* Important part */
+/*.modal-dialog{*/
+/*    overflow-y: initial !important*/
+/*}*/
+/*.modal-body{*/
+/*    height: 250px;*/
+/*    overflow-y: auto;*/
+/*}*/
+

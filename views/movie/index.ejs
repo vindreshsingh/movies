@@ -1,0 +1,75 @@
+<%- include('../partials/header') %>
+<%- include('../partials/indexpartial') %>
+
+<div class = "container movieshow-display-page ">
+  <!-- <% var Revenue = String(movieInfo[0].revenue).substring(0,3); %> -->
+  
+  <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <div class="list-group col-md-3">
+               <li class="list-group-item moviesInfoDisplay selected"><span id="movieHeading"><strong><%= movieInfo[0].title %></strong></span></li>
+               <li class="list-group-item moviesInfoDisplay"><strong>Language: </strong><%= movieInfo[0].original_language %></li>
+               <li class="list-group-item moviesInfoDisplay"><strong>Rating: </strong><%= movieInfo[0].vote_average %>/10</li>
+               <li class="list-group-item moviesInfoDisplay"><strong>Runtime: </strong><%= movieInfo[0].runtime %> mins</li>
+               <li class="list-group-item moviesInfoDisplay"><strong>Revenue: </strong>$<%= Revenue %>mn</li>
+               <li class="list-group-item moviesInfoDisplay"><strong>Status: </strong><%=movieInfo[0].status%></li>
+        </div>
+        
+        <div class="image-container col-md-6">
+            <div id="imageCarousel" class="carousel slide text-center" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+            <% var i = 0 %>
+              <% imagesInfo.forEach(function(image){ %>
+                  <% var imageURL = "http://image.tmdb.org/t/p/w780/" + image.file_path %>
+                  <% if(i == 0) { %>
+                      <div class="item active">
+                      <img class="d-block img-fluid activ" src="<%= imageURL %>">    
+                      </div> 
+                  <%  } else { %>
+                      <div class="item">
+                      <img class="d-block img-fluid" src="<%= imageURL %>">    
+                      </div>
+                  <% } %>
+                  <% i++ %>
+              <% }) %>
+              
+            </div>
+            
+            <a class="left carousel-control" href="#imageCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#imageCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+            </a>
+            </div>
+            
+            <div class="well">
+                <p id="movieTitle"><strong><%= movieInfo[0].title %></strong></p>
+                <p id="movieDescription"><%= movieInfo[0].overview %></p>
+            
+            </div>
+            
+            
+
+        </div> 
+        
+        <div class="col-md-3">
+            <ul class="list-group">
+                <% for(var i = 0; i < 5 && i < similarMoviesInfo.length; i++) { %>
+                    <li class="list-group-item"> 
+                        <% var imageURL = "http://image.tmdb.org/t/p/w500/" + similarMoviesInfo[i].backdrop_path %>
+                        <img src="<%= imageURL %>" class="img-thumbnail" style="width:200px; height:200px"> 
+                        <p><a href= "/movie/<%=similarMoviesInfo[i].id %>"><%= similarMoviesInfo[i].title %></a></p>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+</div>
+
+</div>
+
+
+
+
+<%- include('../partials/footer') %>

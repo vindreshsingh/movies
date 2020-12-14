@@ -1,0 +1,38 @@
+<%- include ('../partials/header') %>
+<%- include ('../partials/indexpartial') %>
+
+
+<div class="container display-page">
+<div class="row text-center" style="display:flex; flex-wrap: wrap;margin:30px">    
+<% for(var i = startLimit; i < totalListLength && i < endLimit; i++) { %>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="thumbnail">
+    <div>
+        <span class="glyphicon glyphicon-folder-open" style="font-size:125px; color:#8585ad;"></span> 
+        <br>
+        <!--<img src="http://www.freeiconspng.com/uploads/blue-directory-icon-png-2.png">-->
+        <a href="/list/show/<%= moviesLists[i]._id %>" class="btn btn-info" role="button"><%= moviesLists[i].name %></a>
+    </div>
+    </div>
+    </div>
+<% } %>
+</div>
+</div>
+
+
+<div class="container">
+    <div class="row text-center">
+    <% if(Number(currentPage) > 1) { %>
+        <a href="/list/<%= Number(currentPage) - 1 %>" class="btn btn-info" id ="#movieListPrev" role="button"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+    <% } else { %>
+        <a href="/list/<%= Number(currentPage) - 1 %>" class="btn btn-info" id ="#movieListPrev" role="button" style="display:none;"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+    <% } %>
+    <% if(Number(totalPages) > Number(currentPage)) { %>    
+        <a href="/list/<%= Number(currentPage) + 1 %>" class="btn btn-info" id ="#movieListNext" role="button"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+    <% } else { %>
+        <a href="/list/<%= Number(currentPage) + 1 %>" class="btn btn-info" id ="#movieListNext" role="button" style="display:none;"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+    <% } %>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
